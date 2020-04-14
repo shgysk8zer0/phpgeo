@@ -1,15 +1,15 @@
 <?php
-namespace shgysk8zer0\PHPAPI;
+namespace shgysk8zer0\PHPGeo;
 
-use \shgysk8zer0\PHPAPI\Interfaces\{Point as PointInterface, Rectangle as RectangleInterface};
+use \shgysk8zer0\PHPGeo\Interfaces\{GeoPointInterface, GeoRectangleInterface};
 
-class Rectangle implements RectangleInterface
+class Rectangle implements GeoRectangleInterface
 {
 	private $_from = null;
 
 	private $_to = null;
 
-	final public function __construct(PointInterface $from, PointInterface $to)
+	final public function __construct(GeoPointInterface $from, GeoPointInterface $to)
 	{
 		$this->setFrom($from);
 		$this->setTo($to);
@@ -23,22 +23,22 @@ class Rectangle implements RectangleInterface
 		];
 	}
 
-	final public function getFrom(): PointInterface
+	final public function getFrom(): GeoPointInterface
 	{
 		return $this->_from;
 	}
 
-	final public function setFrom(PointInterface $val): void
+	final public function setFrom(GeoPointInterface $val): void
 	{
 		$this->_from = $val;
 	}
 
-	final public function getTo(): PointInterface
+	final public function getTo(): GeoPointInterface
 	{
 		return $this->_to;
 	}
 
-	final public function setTo(PointInterface $val): void
+	final public function setTo(GeoPointInterface $val): void
 	{
 		$this->_to = $val;
 	}
