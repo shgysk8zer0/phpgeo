@@ -1,14 +1,15 @@
 <?php
 namespace shgysk8zer0\PHPGeo;
+
 use \shgysk8zer0\PHPGeo\{Ellipse};
-use \shgysk8zer0\PHPAPI\Interfaces\{
+use \shgysk8zer0\PHPGeo\Interfaces\{
 	GeoPointInterface,
 	GeoEllipseInterface,
 	GeoCircleInterface
 };
 use \JSONSerializable;
 
-class Circle implements CircleInterface, JSONSerializable
+class Circle implements GeoCircleInterface, JSONSerializable
 {
 	private $_center = null;
 

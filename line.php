@@ -21,6 +21,11 @@ class Line implements GeoLineInterface, JSONSerializable
 		$this->setTo($to);
 	}
 
+	final public function __debugInfo(): array
+	{
+		return [$this->getFrom(), $this->getTo()];
+	}
+
 	final public function jsonSerialize(): array
 	{
 		return [$this->getFrom(), $this->getTo()];

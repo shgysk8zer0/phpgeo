@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPGeo\Interfaces;
 
-interface GeoCircleInterface extends GeoInterface
+interface GeoCircleInterface extends GeoShapeInterface
 {
 	public function getCenter(): GeoPointInterface;
 

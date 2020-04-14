@@ -17,9 +17,11 @@ interface GeoPointInterface extends GeoInterface
 
 	public function modifyY(float $y): GeoPointInterface;
 
-	public function circleAt(float $r): GeoCircleInterface;
+	public function isSamePointAs(GeoPointInterface $pt): bool;
 
-	public function lineTo(Point $pt): GeoLineInterface;
+	public function createCircleOfRadius(float $r): GeoCircleInterface;
 
-	public function distanceTo(Point $pt): float;
+	public function lineTo(GeoPointInterface $pt): GeoLineInterface;
+
+	public function distanceTo(GeoPointInterface $pt): float;
 }

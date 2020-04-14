@@ -4,7 +4,8 @@ use \shgysk8zer0\PHPGeo\{Line};
 use \shgysk8zer0\PHPGeo\Interfaces\{
 	GeoPointInterface,
 	GeoLineInterface,
-	GeoCircleInterface
+	GeoCircleInterface,
+	GeoEllipseInterface
 };
 
 use \JSONSerializable;
@@ -58,7 +59,7 @@ class Point implements GeoPointInterface, JSONSerializable
 				return $this->getY();
 
 			default:
-				throw new InvalidArgumentException(sprintf('Undefined coorinate: %s', $name));
+				throw new InvalidArgumentException(sprintf('Undefined coordinate: %s', $name));
 				return null;
 		}
 	}
@@ -114,7 +115,12 @@ class Point implements GeoPointInterface, JSONSerializable
 		return $this->modify(0, $y);
 	}
 
-	final public function lineTo(PointInterface $pt): GeoLineInterface
+	final public function isSamePointAs(GeoPointInterface $pt): bool
+	{
+		return $this->getX() === $pt->getX() and $this->getY() === $pt->getY();
+	}
+
+	final public function lineTo(GeoPointInterface $pt): GeoLineInterface
 	{
 		return new Line($this, $pt);
 	}
@@ -124,9 +130,14 @@ class Point implements GeoPointInterface, JSONSerializable
 		return $this->lineTo($pt)->getLength();
 	}
 
-	final public function circleAt(float $r): GeoCircleInterface
+	final public function createCircleOfRadius(float $r): GeoCircleInterface
 	{
 		return new Circle($this, $r);
+	}
+
+	final public function createEllipse(float $width, float $height): GeoEllipseInterface
+	{
+		return new Ellipse($this, $width, $height);
 	}
 
 	final public static function create(float ...$coords):? GeoPointInterface

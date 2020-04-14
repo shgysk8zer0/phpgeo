@@ -5,11 +5,11 @@ interface GeoLineInterface extends GeoInterface
 {
 	public function getFrom(): GeoPointInterface;
 
-	public function setFrom(GeoPointPoint $val): void;
+	public function setFrom(GeoPointInterface $val): void;
 
 	public function getTo(): GeoPointInterface;
 
-	public function setTo(Point $val): void;
+	public function setTo(GeoPointInterface $val): void;
 
 	public function toPolygon(GeoPointInterface ...$pts): GeoPolygonInterface;
 
